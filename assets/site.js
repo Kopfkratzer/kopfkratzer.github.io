@@ -1,6 +1,20 @@
 /* Kopfkratzer – Menü und Bildvergrößerung. Keine Cookies, keine externen Dienste. */
 (function () {
   "use strict";
+  document.documentElement.classList.add("js");
+
+  // Über mich: auf dem Handy zum Aufklappen
+  var aboutToggle = document.querySelector(".about-toggle");
+  if (aboutToggle) {
+    aboutToggle.addEventListener("click", function () {
+      var about = aboutToggle.closest(".about");
+      about.classList.remove("collapsed");
+      aboutToggle.setAttribute("aria-expanded", "true");
+      aboutToggle.hidden = true;
+      var next = about.querySelector(".about-more");
+      if (next) { next.setAttribute("tabindex", "-1"); next.focus({ preventScroll: true }); }
+    });
+  }
 
   // Mobiles Menü
   var toggle = document.querySelector(".nav-toggle");
