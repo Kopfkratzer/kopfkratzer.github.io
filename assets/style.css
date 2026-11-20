@@ -811,3 +811,12 @@ a { color: inherit; }
   .site-nav .social-nav { order: 10; justify-content: center; gap: 12px; margin: 16px 0 0; padding: 0; border: 0; }
   .site-nav .social-nav a.soc { width: 44px; height: 44px; border: 1px solid var(--line); border-bottom: 1px solid var(--line); border-radius: 50%; }
 }
+/* Social-Symbole in Markenfarben */
+.site-nav .social-nav a.soc, .social-footer a.soc { color: #fff; border-color: transparent; box-shadow: 0 2px 6px rgba(22, 34, 74, .18); }
+.site-nav .social-nav a.soc.soc-yt, .social-footer a.soc.soc-yt, a.soc.soc-yt:hover { background: #ff0000 !important; }
+.site-nav .social-nav a.soc.soc-ig, .social-footer a.soc.soc-ig, a.soc.soc-ig:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important; }
+.site-nav .social-nav a.soc.soc-tt, .social-footer a.soc.soc-tt, a.soc.soc-tt:hover { background: #000 !important; }
+.site-nav .social-nav a.soc.soc-tt svg, .social-footer a.soc.soc-tt svg { filter: drop-shadow(1.5px 1.5px 0 #fe2c55) drop-shadow(-1.5px -1.5px 0 #25f4ee); }
+.site-nav .social-nav a.soc.soc-fb, .social-footer a.soc.soc-fb, a.soc.soc-fb:hover { background: #1877f2 !important; }
+.soc:hover { transform: translateY(-2px) scale(1.06); box-shadow: 0 6px 14px rgba(22, 34, 74, .28); }
+.social-footer a.soc { box-shadow: none; }
