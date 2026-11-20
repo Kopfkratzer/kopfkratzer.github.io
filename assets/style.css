@@ -820,3 +820,41 @@ a { color: inherit; }
 .site-nav .social-nav a.soc.soc-fb, .social-footer a.soc.soc-fb, a.soc.soc-fb:hover { background: #1877f2 !important; }
 .soc:hover { transform: translateY(-2px) scale(1.06); box-shadow: 0 6px 14px rgba(22, 34, 74, .28); }
 .social-footer a.soc { box-shadow: none; }
+/* ---------- Daumen-Abstimmung (Ideenwerkstatt) ---------- */
+.vote-box { display: grid; gap: 10px; margin: 6px 0 4px; padding: 14px 16px; border-radius: 14px; background: var(--sun-soft); }
+.vote-q { font-size: .95rem; color: var(--ink-soft); }
+.vote-q b { color: var(--ink); }
+.vote-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.vote-btn { display: inline-flex; align-items: center; gap: 7px; min-height: 42px; padding: 7px 14px; border: 1.5px solid #e2d6a6; border-radius: 999px; background: #fff; font: inherit; font-weight: 700; font-size: .92rem; color: var(--ink); cursor: pointer; transition: transform .15s, border-color .15s, background-color .15s, box-shadow .15s; }
+.vote-btn:hover:not(:disabled) { transform: translateY(-1px); border-color: var(--ink); box-shadow: var(--shadow-sm); }
+.vote-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.vote-thumb { font-size: 1.15rem; line-height: 1; }
+.vote-count { min-width: 1.6em; padding: 1px 7px; border-radius: 999px; background: var(--sky); font-size: .85rem; text-align: center; }
+.vote-btn:disabled { cursor: default; }
+.vote-box.has-voted .vote-btn:not([aria-pressed="true"]) { opacity: .55; }
+.vote-up[aria-pressed="true"] { background: #e3f4ea; border-color: var(--ok); color: var(--ok); }
+.vote-down[aria-pressed="true"] { background: #fff1ef; border-color: #b3261e; color: #b3261e; }
+.vote-btn.bump .vote-thumb { animation: kk-vote .45s ease; }
+@keyframes kk-vote { 40% { transform: scale(1.45) rotate(-12deg); } }
+.vote-note { font-size: .88rem; font-weight: 600; color: var(--ok); }
+.vote-note[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .vote-btn.bump .vote-thumb { animation: none; } }.vote-box, .vote-btns, .vote-btn { min-width: 0; }
+@media (max-width: 640px) {
+  .vote-box { padding: 12px; }
+  .vote-btns { flex-direction: column; }
+  .vote-btn { width: 100%; padding: 7px 10px; font-size: .86rem; gap: 6px; text-align: left; }
+  .vote-btn .vote-count { margin-left: auto; }
+}
+/* ---------- Ausmalen statt Ausrasten ---------- */
+.done-pill { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 18px; border-radius: 999px; background: #e3f4ea; color: var(--ok); font-weight: 800; border: 2px solid #b9e2c8; }
+.bhero-text .vote-box { margin-top: 18px; max-width: 30rem; }
+.status-done { background: #e3f4ea; color: var(--ok); }
+.series-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.series-card { display: grid; gap: 8px; align-content: start; padding: 22px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.series-nr { font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+.series-nr span { color: var(--muted); letter-spacing: .04em; }
+.series-card h3 { font-size: 1.15rem; }
+.series-figure { font-size: .9rem; color: var(--ink-soft); padding: 8px 10px; border-radius: 10px; background: var(--sun-soft); }
+.series-card p:last-child { font-size: .94rem; color: var(--ink-soft); }
+.lab-titles { display: grid; gap: 4px; margin: 2px 0 4px; padding: 0; list-style: none; font-size: .9rem; color: var(--ink-soft); }
+.lab-titles b { color: var(--ink); }

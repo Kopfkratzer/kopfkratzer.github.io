@@ -207,8 +207,56 @@
     });
   }
 
+  // ---------- Daumen-Abstimmung (Zähldienst Abacus, ohne Cookies) ----------
+  var API = "https://abacus.jasoncameron.dev/";
+  var NS = "kopfkratzer.de/";
+  document.querySelectorAll("[data-vote]").forEach(function (box) {
+    var id = box.getAttribute("data-vote");
+    var btns = box.querySelectorAll(".vote-btn");
+    var note = box.querySelector(".vote-note");
+    var mine = null;
+    try { mine = localStorage.getItem("kk-vote-" + id); } catch (e) {}
+
+    function show(dir, n) {
+      var el = box.querySelector('[data-count="' + dir + '"]');
+      if (el && typeof n === "number") el.textContent = n;
+    }
+    function lock(dir) {
+      box.classList.add("has-voted");
+      btns.forEach(function (b) {
+        b.disabled = true;
+        b.setAttribute("aria-pressed", b.getAttribute("data-dir") === dir ? "true" : "false");
+      });
+    }
+    ["ja", "nein"].forEach(function (dir) {
+      fetch(API + "get/" + NS + id + "-" + dir)
+        .then(function (r) { return r.ok ? r.json() : { value: 0 }; })
+        .then(function (d) { show(dir, d.value || 0); })
+        .catch(function () {});
+    });
+    if (mine) { lock(mine); note.textContent = "Danke, du hast schon abgestimmt!"; note.hidden = false; }
+
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var dir = b.getAttribute("data-dir");
+        lock(dir);
+        b.classList.add("bump");
+        try { localStorage.setItem("kk-vote-" + id, dir); } catch (e) {}
+        var el = box.querySelector('[data-count="' + dir + '"]');
+        var cur = parseInt(el.textContent, 10);
+        if (!isNaN(cur)) el.textContent = cur + 1;
+        note.textContent = "Danke für deine Stimme!";
+        note.hidden = false;
+        fetch(API + "hit/" + NS + id + "-" + dir)
+          .then(function (r) { return r.json(); })
+          .then(function (d) { show(dir, d.value); })
+          .catch(function () {});
+      });
+    });
+  });
+
   // ---------- Kontaktformular ----------
-  var form = document.getElementById("kontaktformular");
+  var form =document.getElementById("kontaktformular");
   if (form) initForm(form);
 
   function initForm(form) {
