@@ -157,6 +157,56 @@
     });
   }
 
+  // ---------- Benachrichtigung über neue Bücher (Brevo, Double-Opt-in) ----------
+  var nlForm = document.querySelector("[data-nl-form]");
+  if (nlForm) initNewsletter(nlForm);
+
+  function initNewsletter(f) {
+    var box = f.closest(".nl-box");
+    var done = box.querySelector(".nl-success");
+    var status = f.querySelector(".nl-status");
+    var email = f.querySelector('input[name="EMAIL"]');
+    var btn = f.querySelector('button[type="submit"]');
+    var boxes = f.querySelectorAll('input[name="lists_25[]"]');
+
+    function pick(id) {
+      if (!id) return;
+      for (var i = 0; i < boxes.length; i++) if (boxes[i].value === String(id)) boxes[i].checked = true;
+    }
+    var m = location.search.match(/[?&]liste=(\d+)/);
+    pick(f.getAttribute("data-preselect"));
+    if (m) pick(m[1]);
+    document.querySelectorAll("[data-nl]").forEach(function (a) {
+      a.addEventListener("click", function () { pick(a.getAttribute("data-nl")); });
+    });
+
+    function say(msg) { status.textContent = msg; status.hidden = !msg; }
+
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var any = false;
+      for (var i = 0; i < boxes.length; i++) if (boxes[i].checked) any = true;
+      var v = email.value.trim();
+      if (!any) { say("Bitte wähle mindestens ein Thema aus."); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { say("Bitte gib eine gültige E-Mail-Adresse ein."); email.focus(); return; }
+      if (f.querySelector('input[name="email_address_check"]').value) return;
+      say("");
+      btn.disabled = true;
+      btn.classList.add("is-busy");
+      var url = f.action + (f.action.indexOf("?") > -1 ? "&" : "?") + "isAjax=1";
+      function ok() { f.hidden = true; done.hidden = false; done.focus(); }
+      fetch(url, { method: "POST", body: new FormData(f) })
+        .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+        .then(function (d) {
+          if (d && d.success !== false) ok();
+          else { say("Das hat leider nicht geklappt. Bitte prüfe deine E-Mail-Adresse und versuche es noch einmal."); }
+        })
+        // Antwort nicht lesbar (z. B. vom Browser blockiert): Die Anmeldung ist in der Regel trotzdem angekommen
+        .catch(ok)
+        .then(function () { btn.disabled = false; btn.classList.remove("is-busy"); });
+    });
+  }
+
   // ---------- Kontaktformular ----------
   var form = document.getElementById("kontaktformular");
   if (form) initForm(form);
