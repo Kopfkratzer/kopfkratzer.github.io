@@ -788,3 +788,6 @@ a { color: inherit; }
 }
 .nl-box + .pn-row { margin-top: 44px; }
 .lab-card .link-more { margin-top: 6px; }
+
+.shelf-notify { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 20px; margin-top: 36px; padding: 18px 22px; border-radius: var(--radius); background: var(--sky); text-align: center; color: var(--ink-soft); }
+.shelf-notify b { color: var(--ink); }
