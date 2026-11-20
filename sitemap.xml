@@ -6,6 +6,16 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://kopfkratzer.de/denklabor.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kopfkratzer.de/kontakt.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://kopfkratzer.de/band-1.html</loc>
     <lastmod>2026-11-12</lastmod>
     <priority>0.8</priority>
