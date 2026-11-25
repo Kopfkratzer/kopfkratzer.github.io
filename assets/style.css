@@ -890,3 +890,14 @@ a { color: inherit; }
   .book-grid { grid-template-columns: repeat(4, 1fr); gap: 14px 10px; }
   .book-title { font-size: .72rem; -webkit-line-clamp: 2; }
 }
+
+/* ===== Demnächst erhältlich im Erwachsenen-Bereich (25.11.2026) ===== */
+.adult-soon-head { margin: 56px 0 22px; display: grid; gap: 6px; max-width: 46rem; }
+.adult-soon-head h3 { font-size: 1.5rem; }
+.adult-soon-head p:not(.eyebrow) { color: var(--muted); }
+.adult-card .lab-cover-sketch { width: 100%; }
+.adult-card .lab-titles { margin: 0; }
+@media (max-width: 640px) { .adult-soon-head { margin: 36px 0 14px; } .adult-soon-head h3 { font-size: 1.2rem; } }
+/* Ideenwerkstatt: Ideen-Karte neben die letzte Projektkarte */
+.lab-grid .lab-card-vote { grid-column: auto; flex-direction: column; align-items: flex-start; justify-content: center; }
+.lab-grid .lab-card-vote p { flex: 0 0 auto; }
