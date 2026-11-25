@@ -898,6 +898,3 @@ a { color: inherit; }
 .adult-card .lab-cover-sketch { width: 100%; }
 .adult-card .lab-titles { margin: 0; }
 @media (max-width: 640px) { .adult-soon-head { margin: 36px 0 14px; } .adult-soon-head h3 { font-size: 1.2rem; } }
-/* Ideenwerkstatt: Ideen-Karte neben die letzte Projektkarte */
-.lab-grid .lab-card-vote { grid-column: auto; flex-direction: column; align-items: flex-start; justify-content: center; }
-.lab-grid .lab-card-vote p { flex: 0 0 auto; }
