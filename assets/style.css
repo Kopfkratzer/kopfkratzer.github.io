@@ -858,3 +858,35 @@ a { color: inherit; }
 .series-card p:last-child { font-size: .94rem; color: var(--ink-soft); }
 .lab-titles { display: grid; gap: 4px; margin: 2px 0 4px; padding: 0; list-style: none; font-size: .9rem; color: var(--ink-soft); }
 .lab-titles b { color: var(--ink); }
+
+/* ===== Kompaktere Buch-Kacheln (25.11.2026) ===== */
+/* Jetzt erhältlich: 4 kleine Karten pro Reihe statt 2 große */
+.buy-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; }
+.buy-card { grid-template-columns: 64px 1fr; gap: 12px; padding: 12px; align-items: center; }
+.buy-card > div { gap: 2px; }
+.buy-card .eyebrow { font-size: .68rem; }
+.buy-card h3 { font-size: .95rem; line-height: 1.25; }
+.buy-card p:not(.eyebrow) { display: none; }
+.buy-card .actions { margin-top: 6px; gap: 4px 12px; }
+.buy-card .btn { min-height: 34px; padding: 6px 12px; font-size: .82rem; }
+.buy-card .link-more { font-size: .82rem; }
+.buy-card .btn svg { width: 13px; height: 13px; }
+/* Bücherregal: 10 Bände pro Reihe statt 5 */
+.book-grid { grid-template-columns: repeat(10, 1fr); gap: 22px 14px; }
+.book-cover { margin-bottom: 6px; }
+.book-cover .badge { left: 4px; top: 4px; padding: 3px 6px; font-size: .56rem; letter-spacing: .02em; }
+.book-cover .badge::before { width: 5px; height: 5px; }
+.book-nr { font-size: .64rem; letter-spacing: .06em; }
+.book-title { font-size: .8rem; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 1040px) { .book-grid { grid-template-columns: repeat(6, 1fr); } }
+@media (max-width: 640px) {
+  .buy-grid { grid-template-columns: 1fr; gap: 8px; }
+  .buy-card { grid-template-columns: 46px 1fr; gap: 12px; padding: 8px 12px; align-items: center; }
+  .buy-card .eyebrow { font-size: .62rem; }
+  .buy-card h3 { font-size: .9rem; }
+  .buy-card .actions { margin-top: 4px; }
+  .buy-card .btn { min-height: 30px; padding: 4px 10px; font-size: .78rem; }
+  .buy-card .link-more { display: none; }
+  .book-grid { grid-template-columns: repeat(4, 1fr); gap: 14px 10px; }
+  .book-title { font-size: .72rem; -webkit-line-clamp: 2; }
+}
