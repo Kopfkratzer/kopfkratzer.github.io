@@ -858,3 +858,41 @@ a { color: inherit; }
 .series-card p:last-child { font-size: .94rem; color: var(--ink-soft); }
 .lab-titles { display: grid; gap: 4px; margin: 2px 0 4px; padding: 0; list-style: none; font-size: .9rem; color: var(--ink-soft); }
 .lab-titles b { color: var(--ink); }
+/* ---------- Startseite: vier Türen ---------- */
+.doors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.door { position: relative; display: grid; gap: 6px; align-content: start; padding: 18px 18px 16px; border-radius: 20px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); text-decoration: none; color: var(--ink); overflow: hidden; transition: transform .18s, box-shadow .18s; }
+.door:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.door:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.door-buy { background: linear-gradient(160deg, #fff 30%, #ffe4da); }
+.door-kids { background: linear-gradient(160deg, #fff 30%, #fff1c2); }
+.door-adult { background: linear-gradient(160deg, #fff 30%, #e5f1e2); }
+.door-lab { background: linear-gradient(160deg, #fff 30%, #e3ebfa); }
+.door-count { position: absolute; top: 14px; right: 14px; z-index: 3; padding: 3px 10px; border-radius: 999px; background: var(--sun); font-size: .74rem; font-weight: 800; }
+.door-fan { position: relative; display: block; height: 128px; margin: 4px 0 8px; }
+.door-fan img { position: absolute; bottom: 0; width: 76px; height: auto; aspect-ratio: 340 / 445; object-fit: cover; border-radius: 5px; box-shadow: 0 4px 10px rgba(22, 34, 74, .28); transition: transform .25s; }
+.door-fan img:nth-child(1) { left: 4px; transform: rotate(-9deg); }
+.door-fan img:nth-child(2) { left: 52px; bottom: 8px; z-index: 2; }
+.door-fan img:nth-child(3) { left: 100px; transform: rotate(9deg); }
+.door:hover .door-fan img:nth-child(1) { transform: rotate(-14deg) translateX(-6px); }
+.door:hover .door-fan img:nth-child(3) { transform: rotate(14deg) translateX(6px); }
+.door-title { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; line-height: 1.25; }
+.door-text { font-size: .88rem; color: var(--muted); line-height: 1.45; }
+.door-go { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-weight: 800; font-size: .9rem; color: var(--coral); }
+.phero-shelf { padding-bottom: 8px; }
+.phero-shelf + .section { padding-top: 40px; }
+@media (max-width: 1040px) { .doors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .doors { gap: 12px; }
+  .door { padding: 14px 12px; border-radius: 16px; }
+  .door-fan { height: 92px; }
+  .door-fan img { width: 54px; }
+  .door-fan img:nth-child(2) { left: 36px; }
+  .door-fan img:nth-child(3) { left: 68px; }
+  .door-title { font-size: .98rem; }
+  .door-text { font-size: .8rem; }
+  .door-count { top: 10px; right: 10px; font-size: .68rem; padding: 2px 8px; }
+}
+.phero-shelf { padding-bottom: 40px; }
+.phero-shelf .eyebrow-pill { margin-top: 26px; }
+.phero-shelf h1 { font-size: clamp(2rem, 4.4vw, 3.1rem); margin: 12px 0 8px; }
+.phero-shelf .bhero-sub { max-width: 44rem; }
